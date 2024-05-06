@@ -64,11 +64,11 @@ WSGI_APPLICATION = "vendor_management_system.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "fatmug2",
-        "USER": "root",
-        "PASSWORD": "root123",
+        "NAME": "fatmug",
+        "USER": "",
+        "PASSWORD": "",
         "HOST": "localhost",
-        "PORT": "3306",  # Default MySQL port
+        "PORT": "3306",
     }
 }
 
