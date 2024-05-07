@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
+
 from vendor.models import Vendor
 
 
@@ -6,6 +8,7 @@ class VendorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vendor
         fields = [
+            "id",
             "username",
             "first_name",
             "last_name",
@@ -17,3 +20,10 @@ class VendorSerializer(serializers.ModelSerializer):
             "average_response_time",
             "fulfillment_rate",
         ]
+
+    def validate(self, attrs):
+        if 'vendor_code' in attrs:
+            raise ValidationError("You cannot update the vendor_code field.")
+        if 'username' in attrs:
+            raise ValidationError("You cannot update the username field.")
+        return attrs

@@ -64,9 +64,9 @@ WSGI_APPLICATION = "vendor_management_system.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "fatmug",
-        "USER": "",
-        "PASSWORD": "",
+        "NAME": "fatmug2",
+        "USER": "root",
+        "PASSWORD": "root123",
         "HOST": "localhost",
         "PORT": "3306",
     }
@@ -102,3 +102,22 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'vendor.Vendor'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'DEBUG',
+    },
+}
