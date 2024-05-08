@@ -1,0 +1,462 @@
+{
+	"info": {
+		"_postman_id": "e8a199d5-62ce-47a3-b4f6-1c20edafd770",
+		"name": "Fatmug",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11073573"
+	},
+	"item": [
+		{
+			"name": "List all vendors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/vendors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"vendors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Vendor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \"username\": \"shivam.ahuja\",\r\n        \"first_name\": \"testing\",\r\n        \"last_name\": \"patch\",\r\n        \"email\": \"shiva.ahuja@gmail.com\",\r\n        \"contact_number\": \"8384049642\",\r\n        \"vendor_code\": \"88f375f5-6a4e-4ab0-ac40-81a8b5a87418\",\r\n        \"on_time_delivery_rate\": 0.0,\r\n        \"quality_rating_avg\": 0.0,\r\n        \"average_response_time\": 0.0,\r\n        \"fulfillment_rate\": 0.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/vendors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"vendors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get vendor by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/vendors/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"vendors",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Vendor",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"testing\",\r\n    \"last_name\": \"patch\",\r\n    \"email\": \"shiva.ahuja@gmail.com\",\r\n    \"on_time_delivery_rate\": 0.0,\r\n    \"quality_rating_avg\": 0.0,\r\n    \"average_response_time\": 10.0,\r\n    \"fulfillment_rate\": 0.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/vendors/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"vendors",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete vendor",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/vendors/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"vendors",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create PO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"vendor\": 6,\r\n    \"po_number\": \"124\",\r\n    \"delivery_date\": \"2024-05-08\",\r\n    \"items\": {\r\n        \"ice cream\": {\r\n            \"price\": 60,\r\n            \"quantity\": 2\r\n        },\r\n        \"cake\": {\r\n            \"price\": 40,\r\n            \"quantity\": 2\r\n        }\r\n    },\r\n    \"quantity\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/purchase_orders/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"purchase_orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Purchase Orders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/purchase_orders/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"purchase_orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get PO by po_id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/purchase_orders/5/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"purchase_orders",
+						"5",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update PO",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quality_rating\":4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/purchase_orders/6/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"purchase_orders",
+						"6",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Po",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/purchase_orders/4/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"purchase_orders",
+						"4",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor Performance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/vendors/4/performance/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"vendors",
+						"4",
+						"performance",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "acknowledge PO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 962872fbe90b5a3b0a050010e74e2da253d1b898",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/api/purchase_orders/5/acknowledge/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"api",
+						"purchase_orders",
+						"5",
+						"acknowledge",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vendor/login/?username=shivam&password=root123",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vendor",
+						"login",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "shivam"
+						},
+						{
+							"key": "password",
+							"value": "root123"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
