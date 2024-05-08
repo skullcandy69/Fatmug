@@ -1,4 +1,4 @@
-from django.db.models import Avg, Count, F
+from django.db.models import Avg, F
 import logging
 
 from vendor.models import PurchaseOrder, VendorPerformance
@@ -33,15 +33,16 @@ class VendorPerformanceService:
             status__in=PurchaseOrderStatus.success_status_list,
             quality_rating__isnull=False,
         )
-        return (
-            round(
-                completed_orders_with_rating.aggregate(
-                    average_rating=Avg("quality_rating")
-                )["average_rating"],
-                3,
-            )
-            or 0.0
-        )
+        if completed_orders_with_rating:
+            return round(
+                    completed_orders_with_rating.aggregate(
+                        average_rating=Avg("quality_rating")
+                    )["average_rating"],
+                    3,
+                )
+
+        else:
+            return 0.0
 
     @staticmethod
     def calculate_average_response_time(vendor):

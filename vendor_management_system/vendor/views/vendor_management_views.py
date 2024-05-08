@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from vendor.models import Vendor
-from vendor.serializers import VendorSerializer
+from vendor.serializers import VendorSerializerV1,VendorSerializerV2
 from vendor.utils.custom_response_helper import custom_response
 
 logger = logging.getLogger(__name__)
@@ -22,7 +22,7 @@ class VendorViews(APIView):
                     status=status.HTTP_204_NO_CONTENT,
                 )
 
-            serialized_data = VendorSerializer(vendor_qs, many=True)
+            serialized_data = VendorSerializerV1(vendor_qs, many=True)
             return Response(
                 data=custom_response(serialized_data.data, "", True),
                 status=status.HTTP_200_OK,
@@ -37,7 +37,7 @@ class VendorViews(APIView):
         try:
             data = requst.data
             logger.info(f"data for creating vendor: {data}")
-            vendor_serializer = VendorSerializer(data=data)
+            vendor_serializer = VendorSerializerV1(data=data)
             if vendor_serializer.is_valid():
                 vendor_serializer.save()
                 logger.info(f"vendor data saved successfully")
@@ -68,7 +68,7 @@ class VendorManagement(APIView):
     def get(self, request, vendor_id):
         try:
             vendor_qs = Vendor.objects.get(id=vendor_id)
-            serialized_data = VendorSerializer(vendor_qs)
+            serialized_data = VendorSerializerV2(vendor_qs)
             return Response(
                 data=custom_response(serialized_data.data, "", True),
                 status=status.HTTP_200_OK,
@@ -89,7 +89,7 @@ class VendorManagement(APIView):
             data = requst.data
             logger.info(f"data for updating vendor_id:{vendor_id} {data}")
             vendor = Vendor.objects.get(id=vendor_id)
-            vendor_serializer = VendorSerializer(vendor, data=data, partial=True)
+            vendor_serializer = VendorSerializerV2(vendor, data=data, partial=True)
             if vendor_serializer.is_valid():
                 vendor_serializer.save()
                 return Response(

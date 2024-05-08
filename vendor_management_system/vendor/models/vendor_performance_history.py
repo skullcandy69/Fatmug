@@ -10,4 +10,4 @@ class VendorPerformance(AbstractDateTime):
     fulfillment_rate = models.FloatField(null=True)
 
     def __str__(self):
-        return f"vendor_id:{self.vendor.id} id{self.id}"
+        return f"vendor_id:{self.vendor.id}:id:{self.id}"

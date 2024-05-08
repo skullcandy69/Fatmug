@@ -20,4 +20,4 @@ class PurchaseOrder(models.Model):
     acknowledgment_date = models.DateTimeField(null=True)
 
     def __str__(self):
-        return f"{self.po_number} status:{self.status}"
+        return f"{self.po_number}:status:{self.status}"

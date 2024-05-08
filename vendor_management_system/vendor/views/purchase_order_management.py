@@ -132,7 +132,7 @@ class PurchaseOrderTracking(APIView):
             )
         
 class UpdateAcknowlegement(APIView):
-    def patch(self,request,po_id):
+    def post(self,request,po_id):
         try:
             purchase_order = PurchaseOrder.objects.get(id=po_id)
             purchase_order.acknowledgment_date = timezone.now()

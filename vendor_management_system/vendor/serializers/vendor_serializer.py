@@ -4,7 +4,25 @@ from rest_framework.exceptions import ValidationError
 from vendor.models import Vendor
 
 
-class VendorSerializer(serializers.ModelSerializer):
+class VendorSerializerV1(serializers.ModelSerializer):
+    class Meta:
+        model = Vendor
+        fields = [
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "contact_number",
+            "vendor_code",
+            "on_time_delivery_rate",
+            "quality_rating_avg",
+            "average_response_time",
+            "fulfillment_rate",
+        ]
+
+
+class VendorSerializerV2(serializers.ModelSerializer):
     class Meta:
         model = Vendor
         fields = [

@@ -38,6 +38,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'vendor.middleware.TokenAuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = "vendor_management_system.urls"
@@ -64,9 +65,9 @@ WSGI_APPLICATION = "vendor_management_system.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "fatmug2",
-        "USER": "root",
-        "PASSWORD": "root123",
+        "NAME": "fatmug",
+        "USER": "",
+        "PASSWORD": "",
         "HOST": "localhost",
         "PORT": "3306",
     }
@@ -120,4 +121,13 @@ LOGGING = {
         'handlers': ['console', 'file'],
         'level': 'DEBUG',
     },
+}
+
+# CSRF_COOKIE_SECURE = True  # Set to True for HTTPS deployment
+# CSRF_COOKIE_HTTPONLY = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }

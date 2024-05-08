@@ -8,4 +8,5 @@ urlpatterns = [
     path('api/purchase_orders/<int:po_id>/', PurchaseOrderTracking.as_view(), name='purchase-order-tracking'),
     path('api/purchase_orders/<int:po_id>/acknowledge/', UpdateAcknowlegement.as_view(), name='purchase-order-tracking'),
     path('api/vendors/<int:vendor_id>/performance/', VendorPerformanceView.as_view(), name='vendor-performance-metrics'),
+    path('login/', LoginView.as_view(), name='user-login'),
 ]
